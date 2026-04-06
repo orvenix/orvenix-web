@@ -1,0 +1,48 @@
+/* ============================================
+   VARIABLES & RESET
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --bg: #050b14;
+  --bg-2: #0a1424;
+  --text: #ffffff;
+  --text-muted: #a1a1aa;
+  --accent: #00c8d4;
+  --accent-2: #3b82f6;
+  --accent-3: #2dd4bf;
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.1);
+  --font-display: 'Inter', system-ui, sans-serif;
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Se mantiene la transición general */
+  --nav-height: 80px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--bg-2); border: 2px solid var(--bg); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; outline: none; transition: background-color 0.3s ease, color 0.3s ease; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+@media (max-width: 480px) { .container { padding: 0 1.2rem; } }
+section { padding: clamp(4.5rem, 9vw, 7rem) 0; }
+a { text-decoration: none; color: inherit; transition: var(--transition); }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+img { max-width: 100%; }
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 9999;
+}

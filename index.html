@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Orvenix — Agencia de desarrollo web premium. Creamos experiencias digitales únicas: sitios web, apps, e-commerce y estrategia digital." />
+  <title>Orvenix — Desarrollo Web Premium</title>
+
+  <link rel="canonical" href="https://orvenix.com/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://orvenix.com/" />
+  <meta property="og:title" content="Orvenix — Desarrollo Web Premium" />
+  <meta property="og:description" content="Agencia de desarrollo web de alto impacto. Elevamos tu presencia digital." />
+  <meta property="og:image" content="/img/logo.png" />
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon1.png" />
+  <link rel="apple-touch-icon" href="/img/favicon1.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Orvenix",
+    "image": "/img/logo.png",
+    "url": "https://orvenix.com",
+    "telephone": "+528112345678",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Monterrey",
+      "addressRegion": "NL",
+      "addressCountry": "MX"
+    },
+    "serviceType": ["Desarrollo Web", "E-commerce", "Apps Móviles"],
+    "priceRange": "$$"
+  }
+  </script>
+
+  <link rel="stylesheet" href="css/layout.css"> <!-- Correcto, en la raíz -->
+  <link rel="stylesheet" href="css/variables.css"> <!-- Correcto, en la raíz -->
+  <link rel="stylesheet" href="css/sections.css"> <!-- Correcto, en la raíz -->
+  <link rel="stylesheet" href="css/chatbot.css"> <!-- Correcto, en la raíz -->
+</head>
+<body class="body-hidden">
+
+  <!-- Preloader -->
+  <div id="preloader" aria-label="Cargando">
+    <img src="/img/logo2.png" alt="Orvenix" class="preloader-logo" />
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scrollProgress"></div>
+
+  <!-- Global Mouse Glow -->
+  <div id="globalGlow" class="global-glow"></div>
+
+  <!-- Nav overlay (mobile) -->
+  <div id="navOverlay"></div>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+    <div class="container">
+      <div class="nav-inner">
+
+        <!-- Logo — izquierda en desktop, centrado en mobile via CSS -->
+        <a href="/" class="logo" aria-label="Orvenix — inicio">
+          <img src="/img/logo.png" alt="Orvenix logo" class="logo-image" />
+        </a>
+
+        <!-- Botón de Tema (Centrado) -->
+        <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+
+        <!-- Desktop links -->
+        <ul class="nav-links" id="navLinks" role="menubar">
+          <li role="none"><a href="/servicios/" role="menuitem">Servicios</a></li>
+          <li role="none"><a href="/proceso/" role="menuitem">Proceso</a></li>
+          <li role="none"><a href="/portafolio/" role="menuitem">Portafolio</a></li>
+          <li role="none"><a href="/precios/" role="menuitem">Precios</a></li>
+          <li role="none"><a href="/faq/" role="menuitem">FAQ</a></li>
+          <li role="none"><a href="/contacto/" class="nav-cta" role="menuitem">Contacto</a></li>
+        </ul>
+
+        <!-- Hamburger — derecha, solo en mobile -->
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <!-- Floating CTA -->
+  <a href="/contacto/" class="cta-float" aria-label="Iniciar proyecto">Hablemos →</a>
+
+  <!-- WhatsApp -->
+  <a href="https://wa.me/528112345678" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" class="whatsapp-svg" fill="currentColor" aria-hidden="true">
+      <path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.733 5.476 2.016 7.785L0 31.2l7.587-1.99A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.604-1.722l-.474-.264-4.505 1.182 1.203-4.42-.292-.464A13.267 13.267 0 012.667 16C2.667 8.649 8.649 2.667 16 2.667S29.333 8.649 29.333 16 23.351 29.333 16 29.333zm7.283-9.99c-.359-.18-2.125-1.047-2.453-1.167-.328-.12-.568-.18-.807.18s-.927 1.167-1.135 1.406c-.213.239-.422.269-.781.09-.359-.18-1.516-.557-2.885-1.779-1.063-.948-1.781-2.119-1.99-2.479-.213-.359-.021-.553.158-.732.163-.161.359-.419.536-.628s.239-.359.359-.598c.12-.239.06-.449-.03-.628s-.807-1.946-1.106-2.665c-.293-.701-.589-.606-.807-.617-.208-.01-.448-.01-.688-.01s-.628.09-.957.449c-.328.359-1.255 1.226-1.255 2.99s1.286 3.468 1.465 3.708c.18.239 2.531 3.865 6.131 5.416.857.368 1.526.589 2.047.755.86.273 1.643.235 2.261.143.69-.103 2.125-.868 2.422-1.706.297-.838.297-1.556.208-1.706s-.328-.239-.688-.419z"/>
+    </svg>
+  </a>
+
+  <!-- Back to top -->
+  <button id="backToTop" aria-label="Volver arriba">↑</button>
+
+  <!-- ============================================================
+       MAIN CONTENT
+  ============================================================ -->
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="inicio" aria-label="Portada">
+      <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-inner">
+
+          <!-- Left col -->
+          <div class="hero-content">
+            <div class="hero-eyebrow" aria-label="Estado: disponible">
+              <div class="hero-eyebrow-dot" aria-hidden="true"></div>
+              <span>Disponibles para nuevos proyectos</span>
+            </div>
+
+            <h1 class="hero-title">
+              Tecnología que<br/>
+              <span class="line-accent">conecta</span><br/>
+              soluciones que transforman
+            </h1>
+
+            <p class="hero-subtitle">
+              Diseñamos y desarrollamos experiencias digitales de alto impacto.
+              Desde landing pages hasta aplicaciones web complejas, construimos
+              exactamente lo que tu negocio necesita.
+            </p>
+
+            <div class="hero-actions">
+              <a href="/contacto/" class="btn btn-primary">Iniciar proyecto ↗</a>
+              <a href="/portafolio/" class="btn btn-outline">Ver portafolio</a>
+            </div>
+
+            <div class="hero-stats" aria-label="Estadísticas">
+              <div>
+                <div class="stat-num"><span data-target="120" data-suffix="+">0+</span></div>
+                <div class="stat-label">Proyectos entregados</div>
+              </div>
+              <div>
+                <div class="stat-num"><span data-target="98" data-suffix="%">0%</span></div>
+                <div class="stat-label">Clientes satisfechos</div>
+              </div>
+              <div>
+                <div class="stat-num"><span data-target="10" data-suffix="+">0+</span></div>
+                <div class="stat-label">Años de experiencia</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right col — code card -->
+          <div class="hero-visual">
+            <div class="hero-badge hero-badge-1">
+              <span aria-hidden="true">⚡</span>
+              <span>Page Speed 98/100</span>
+            </div>
+
+            <div class="hero-code-card" role="img" aria-label="Ejemplo de código React">
+              <div class="code-bar" aria-hidden="true">
+                <div class="code-dot"></div>
+                <div class="code-dot"></div>
+                <div class="code-dot"></div>
+                <span class="code-file">App.tsx</span>
+              </div>
+              <div class="code-body">
+                <span class="code-line"><span class="c-purple">import</span> <span class="c-blue">React</span> <span class="c-purple">from</span> <span class="c-green">'react'</span></span>
+                <span class="code-line c-gray">// ✦ Orvenix</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="c-purple">const</span> <span class="c-blue">Website</span> = () <span class="c-purple">=&gt;</span> {</span>
+                <span class="code-line indent"><span class="c-purple">return</span> (</span>
+                <span class="code-line indent2"><span class="c-orange">&lt;main</span> <span class="c-cyan">className</span>=<span class="c-green">"app"</span><span class="c-orange">&gt;</span></span>
+                <span class="code-line indent2">&nbsp; <span class="c-orange">&lt;Hero</span> <span class="c-cyan">bold</span> <span class="c-orange">/&gt;</span></span>
+                <span class="code-line indent2">&nbsp; <span class="c-orange">&lt;Services</span> <span class="c-orange">/&gt;</span></span>
+                <span class="code-line indent2">&nbsp; <span class="c-orange">&lt;Results</span> <span class="c-cyan">amazing</span> <span class="c-orange">/&gt;</span></span>
+                <span class="code-line indent2"><span class="c-orange">&lt;/main&gt;</span></span>
+                <span class="code-line indent">)</span>
+                <span class="code-line">}</span>
+                <span class="code-line">&nbsp;</span>
+                <span class="code-line"><span class="c-purple">export default</span> <span class="c-blue">Website</span></span>
+              </div>
+            </div>
+
+            <div class="hero-badge hero-badge-2">
+              <span aria-hidden="true">🚀</span>
+              <span>Deploy en 24h</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SERVICIOS -->
+    <section id="servicios" aria-labelledby="servicios-title">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-tag">Servicios</div>
+          <h2 class="section-title" id="servicios-title">Todo lo que tu negocio<br/><em>necesita en la web</em></h2>
+          <p class="section-desc">Ofrecemos soluciones completas de desarrollo web adaptadas a cada etapa de tu empresa.</p>
+        </div>
+
+        <div class="grid-3 margin-top-3">
+          <div class="card service-card reveal spotlight-1">
+            <div class="service-icon">🎨</div>
+            <h3 class="service-title">Diseño & Landing Pages</h3>
+            <p class="service-desc">Páginas de aterrizaje optimizadas para conversión con diseños únicos que reflejan tu marca y guían a los usuarios a la acción.</p>
+            <div class="service-tags">
+              <span class="tag">Figma</span><span class="tag">UI/UX</span><span class="tag">CRO</span>
+            </div>
+          </div>
+
+          <div class="card service-card reveal spotlight-2">
+            <div class="service-icon">🛒</div>
+            <h3 class="service-title">Tiendas E-commerce</h3>
+            <p class="service-desc">Tiendas online completas con pasarelas de pago, gestión de inventario, pedidos automatizados y experiencia de compra fluida.</p>
+            <div class="service-tags">
+              <span class="tag">Shopify</span><span class="tag">WooCommerce</span><span class="tag">Next.js</span>
+            </div>
+          </div>
+
+          <div class="card service-card reveal spotlight-3">
+            <div class="service-icon">⚙️</div>
+            <h3 class="service-title">Aplicaciones Web</h3>
+            <p class="service-desc">Plataformas y dashboards a medida con autenticación, bases de datos, APIs REST y arquitecturas escalables en la nube.</p>
+            <div class="service-tags">
+              <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">AWS</span>
+            </div>
+          </div>
+
+          <div class="card service-card reveal spotlight-4">
+            <div class="service-icon">📱</div>
+            <h3 class="service-title">Apps Móviles</h3>
+            <p class="service-desc">Aplicaciones iOS y Android nativas o multiplataforma con interfaces rápidas, notificaciones push y experiencia premium.</p>
+            <div class="service-tags">
+              <span class="tag">React Native</span><span class="tag">Flutter</span><span class="tag">Expo</span>
+            </div>
+          </div>
+
+          <div class="card service-card reveal spotlight-5">
+            <div class="service-icon">🔍</div>
+            <h3 class="service-title">SEO & Performance</h3>
+            <p class="service-desc">Optimización técnica, Core Web Vitals, velocidad de carga, posicionamiento en buscadores y auditorías de accesibilidad.</p>
+            <div class="service-tags">
+              <span class="tag">SEO Técnico</span><span class="tag">Lighthouse</span><span class="tag">Analytics</span>
+            </div>
+          </div>
+
+          <div class="card service-card reveal spotlight-6">
+            <div class="service-icon">🔧</div>
+            <h3 class="service-title">Mantenimiento & Soporte</h3>
+            <p class="service-desc">Actualizaciones continuas, monitoreo 24/7, backups automáticos, seguridad avanzada y soporte técnico prioritario.</p>
+            <div class="service-tags">
+              <span class="tag">DevOps</span><span class="tag">CI/CD</span><span class="tag">Uptime 99.9%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PROCESO -->
+    <section id="proceso" class="background-bg-2" aria-labelledby="proceso-title">
+      <div class="container">
+        <div class="reveal text-center margin-bottom-3">
+          <div class="section-tag justify-center">Proceso</div>
+          <h2 class="section-title" id="proceso-title">Cómo trabajamos<br/><em>contigo</em></h2>
+        </div>
+
+        <div class="process-steps reveal">
+          <div class="process-step">
+            <div class="step-num">01</div>
+            <h3 class="step-title">Descubrimiento</h3>
+            <p class="step-desc">Analizamos tu negocio, objetivos y audiencia para definir la estrategia digital ideal.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">02</div>
+            <h3 class="step-title">Diseño</h3>
+            <p class="step-desc">Creamos prototipos en Figma con tu feedback hasta conseguir el diseño perfecto.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">03</div>
+            <h3 class="step-title">Desarrollo</h3>
+            <p class="step-desc">Programamos con código limpio, modular y optimizado con entregas semanales.</p>
+          </div>
+          <div class="process-step">
+            <div class="step-num">04</div>
+            <h3 class="step-title">Lanzamiento</h3>
+            <p class="step-desc">Deploy en producción, pruebas finales y monitoreo del primer mes incluido.</p>
+          </div>
+        </div>
+
+        <div class="reveal margin-top-4">
+          <div class="section-tag">Tecnologías</div>
+          <h3 class="font-size-1-35">Stack moderno y<br/>probado en producción</h3>
+          <div class="tech-row">
+            <div class="tech-pill">⚛️ React</div>
+            <div class="tech-pill">▲ Next.js</div>
+            <div class="tech-pill">💚 Vue.js</div>
+            <div class="tech-pill">🐢 Node.js</div>
+            <div class="tech-pill">🐘 PostgreSQL</div>
+            <div class="tech-pill">🔥 Firebase</div>
+            <div class="tech-pill">☁️ AWS</div>
+            <div class="tech-pill">🐳 Docker</div>
+            <div class="tech-pill">🎨 Figma</div>
+            <div class="tech-pill">📱 React Native</div>
+            <div class="tech-pill">🦋 Flutter</div>
+            <div class="tech-pill">🛒 Shopify</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PORTAFOLIO -->
+    <section id="portafolio" aria-labelledby="portafolio-title">
+      <div class="container">
+        <div class="reveal display-flex">
+          <div>
+            <div class="section-tag">Portafolio</div>
+            <h2 class="section-title" id="portafolio-title">Proyectos que<br/><em>hablan por sí solos</em></h2>
+          </div>
+          <a href="/portafolio/" class="btn btn-outline">Ver todos →</a>
+        </div>
+
+        <div class="portfolio-grid reveal">
+          <div class="portfolio-item">
+            <div class="portfolio-placeholder">🛍️</div>
+            <div class="portfolio-overlay">
+              <span class="badge">E-commerce</span>
+              <h3 class="portfolio-overlay-title">Modavida Store</h3>
+              <p class="portfolio-overlay-sub">Shopify + Next.js · 340% aumento en ventas</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-placeholder">📊</div>
+            <div class="portfolio-overlay">
+              <span class="badge">SaaS</span>
+              <h3 class="portfolio-overlay-title">DataPulse Dashboard</h3>
+              <p class="portfolio-overlay-sub">React + Node.js · 12k usuarios activos</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-placeholder">🏨</div>
+            <div class="portfolio-overlay">
+              <span class="badge">Corporativo</span>
+              <h3 class="portfolio-overlay-title">GrandHotel Resort</h3>
+              <p class="portfolio-overlay-sub">Next.js + CMS · +180% reservas online</p>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <div class="portfolio-placeholder">🏋️</div>
+            <div class="portfolio-overlay">
+              <span class="badge">App Móvil</span>
+              <h3 class="portfolio-overlay-title">FitTrack Pro</h3>
+              <p class="portfolio-overlay-sub">React Native · 50k descargas en 3 meses</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- PRECIOS -->
+    <section id="precios" class="background-bg-2" aria-labelledby="precios-title">
+      <div class="container">
+        <div class="reveal text-center margin-bottom-3">
+          <div class="section-tag justify-center">Precios</div>
+          <h2 class="section-title" id="precios-title">Planes claros,<br/><em>sin sorpresas</em></h2>
+          <p class="section-desc max-width-540">Precios en USD. Todos incluyen hosting del primer año y soporte post-lanzamiento de 30 días.</p>
+        </div>
+
+        <div class="pricing-grid">
+          <!-- Starter -->
+          <div class="pricing-card reveal">
+            <div class="pricing-name">Starter</div>
+            <div class="pricing-desc">Ideal para emprendedores y negocios que están comenzando su presencia digital.</div>
+            <div class="pricing-price"><sup>$</sup>120</div>
+            <div class="pricing-period">pago único</div>
+            <ul class="pricing-features">
+              <li><span class="feat-check">✓</span> Landing page de hasta 5 secciones</li>
+              <li><span class="feat-check">✓</span> Diseño responsivo (móvil + desktop)</li>
+              <li><span class="feat-check">✓</span> Formulario de contacto</li>
+              <li><span class="feat-check">✓</span> SEO básico optimizado</li>
+              <li><span class="feat-check">✓</span> 30 días de soporte</li>
+              <li><span class="feat-x">✗</span> CMS para editar contenido</li>
+              <li><span class="feat-x">✗</span> E-commerce</li>
+            </ul>
+            <a href="/contacto/" class="btn btn-outline width-100">Empezar →</a>
+          </div>
+
+          <!-- Pro (featured) -->
+          <div class="pricing-card featured reveal">
+            <div class="pricing-popular">⭐ Más popular</div>
+            <div class="pricing-name">Professional</div>
+            <div class="pricing-desc">Para empresas que necesitan una web completa con funcionalidades avanzadas.</div>
+            <div class="pricing-price"><sup>$</sup>350</div>
+            <div class="pricing-period">pago único</div>
+            <ul class="pricing-features">
+              <li><span class="feat-check">✓</span> Sitio web de hasta 10 páginas</li>
+              <li><span class="feat-check">✓</span> Diseño UI/UX personalizado</li>
+              <li><span class="feat-check">✓</span> CMS para gestión de contenido</li>
+              <li><span class="feat-check">✓</span> Blog integrado</li>
+              <li><span class="feat-check">✓</span> SEO avanzado + Analytics</li>
+              <li><span class="feat-check">✓</span> 60 días de soporte prioritario</li>
+              <li><span class="feat-x">✗</span> E-commerce / Tienda</li>
+            </ul>
+            <a href="/contacto/" class="btn btn-primary width-100">Empezar →</a>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-card reveal">
+            <div class="pricing-name">Enterprise</div>
+            <div class="pricing-desc">Soluciones personalizadas: e-commerce, aplicaciones web o plataformas a medida.</div>
+            <div class="pricing-price font-size-2-2">Custom</div>
+            <div class="pricing-period">cotización personalizada</div>
+            <ul class="pricing-features">
+              <li><span class="feat-check">✓</span> Todo lo del plan Pro</li>
+              <li><span class="feat-check">✓</span> E-commerce completo</li>
+              <li><span class="feat-check">✓</span> Integraciones con APIs de terceros</li>
+              <li><span class="feat-check">✓</span> App móvil (iOS + Android)</li>
+              <li><span class="feat-check">✓</span> Dashboard de administración</li>
+              <li><span class="feat-check">✓</span> SLA y soporte 24/7</li>
+              <li><span class="feat-check">✓</span> Mantenimiento mensual</li>
+            </ul>
+            <a href="/contacto/" class="btn btn-outline width-100">Consultar →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- TESTIMONIOS -->
+    <section id="testimonios" aria-labelledby="testimonios-title">
+      <div class="container">
+        <div class="reveal text-center margin-bottom-3">
+          <div class="section-tag justify-center">Testimonios</div>
+          <h2 class="section-title" id="testimonios-title">Lo que dicen<br/><em>nuestros clientes</em></h2>
+        </div>
+
+        <div class="testimonial-grid">
+          <div class="card testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="testimonial-text">"Orvenix transformó completamente nuestra presencia digital. Las ventas en línea aumentaron un 340% en el primer trimestre después del lanzamiento. Absolutamente recomendados."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar">AM</div>
+              <div>
+                <div class="author-name">Alejandro Morales</div>
+                <div class="author-role">CEO · Modavida Store</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="testimonial-text">"Entregaron el proyecto en tiempo y dentro del presupuesto. El código es limpio, documentado y fácil de mantener. El equipo es muy profesional y siempre disponible."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-1">SR</div>
+              <div>
+                <div class="author-name">Sofía Rodríguez</div>
+                <div class="author-role">CTO · DataPulse</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card testimonial-card reveal">
+            <div class="testimonial-stars" aria-label="5 estrellas">★★★★★</div>
+            <p class="testimonial-text">"Nuestra app móvil llegó a 50k descargas en solo 3 meses. La experiencia de usuario es impecable y los usuarios siempre nos elogian el diseño. Trabajo excepcional."</p>
+            <div class="testimonial-author">
+              <div class="author-avatar avatar-2">LC</div>
+              <div>
+                <div class="author-name">Luis Camacho</div>
+                <div class="author-role">Founder · FitTrack Pro</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section id="faq" class="background-bg-2" aria-labelledby="faq-title">
+      <div class="container">
+        <div class="reveal text-center margin-bottom-3">
+          <div class="section-tag justify-center">FAQ</div>
+          <h2 class="section-title" id="faq-title">Preguntas<br/><em>frecuentes</em></h2>
+        </div>
+
+        <div class="faq-list reveal">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Cuánto tiempo tarda el desarrollo de un sitio web?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Depende de la complejidad del proyecto. Una landing page puede estar lista en 1–2 semanas. Un sitio corporativo completo suele tomar 3–6 semanas. Proyectos de e-commerce o aplicaciones web pueden requerir 6–16 semanas. Siempre te damos un cronograma detallado antes de iniciar.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Qué incluye el soporte post-lanzamiento?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>El período de soporte incluye: corrección de bugs, ajustes menores de diseño y contenido, monitoreo de disponibilidad, actualización de dependencias y asesoría técnica. Para soporte continuo a largo plazo ofrecemos planes de mantenimiento mensual.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Trabajo con clientes fuera de México?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>¡Sí! Trabajamos con clientes en toda Latinoamérica, España y Estados Unidos. Todo el proceso puede realizarse 100% de forma remota a través de videollamadas, Slack y nuestras herramientas de colaboración. Aceptamos pagos en USD y MXN.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Podré editar mi sitio web yo mismo después?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Absolutamente. En los planes Pro y Enterprise integramos un CMS (sistema de gestión de contenido) intuitivo que te permite editar textos, imágenes, productos o entradas de blog sin necesidad de conocimientos técnicos. También te capacitamos en su uso.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿Cómo es el proceso de pago?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Dividimos el pago en etapas: 40% al inicio del proyecto, 40% al aprobar el diseño, y 20% al entregar el sitio en producción. Aceptamos transferencia bancaria, PayPal y Stripe. Para proyectos grandes podemos acordar otros esquemas de pago.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              ¿El sitio web será rápido y bien posicionado en Google?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Sí. Todos nuestros proyectos se optimizan para lograr puntuaciones de 90+ en Google Lighthouse. Implementamos las mejores prácticas técnicas de SEO desde el día uno para que Google indexe tu sitio correctamente.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- CONTACTO -->
+    <section id="contacto" aria-labelledby="contacto-title">
+      <div class="container">
+        <div class="contact-grid">
+          <!-- Info -->
+          <div class="reveal">
+            <div class="section-tag">Contacto</div>
+            <h2 class="contact-info" id="contacto-title">¿Listo para<br/><em>lanzar tu proyecto?</em></h2>
+            <p class="color-text-muted">
+              Cuéntanos tu idea y te respondemos en menos de 24 horas con una propuesta personalizada sin compromiso.
+            </p>
+            <div class="contact-channels">
+              <div class="channel">
+                <span class="channel-icon" aria-hidden="true">✉️</span>
+                <div>
+                  <div class="channel-label">Email</div>
+                  <div class="channel-value"><a href="mailto:hola@orvenix.com">hola@orvenix.com</a></div>
+                </div>
+              </div>
+              <div class="channel">
+                <span class="channel-icon" aria-hidden="true">💬</span>
+                <div>
+                  <div class="channel-label">WhatsApp</div>
+                  <div class="channel-value">+52 (81) 1234-5678</div>
+                </div>
+              </div>
+              <div class="channel">
+                <span class="channel-icon" aria-hidden="true">📍</span>
+                <div>
+                  <div class="channel-label">Ubicación</div>
+                  <div class="channel-value">Monterrey, Nuevo León, México</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Form -->
+          <div class="card reveal">
+            <form id="contactForm" action="/backend/guardar.php" method="POST" novalidate>
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="nombre">Nombre *</label>
+                  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required autocomplete="name" />
+                </div>
+                <div class="form-group">
+                  <label for="email">Email *</label>
+                  <input type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email" />
+                  <span class="email-validation-status" aria-hidden="true"></span>
+                </div>
+              </div>
+
+              <!-- Honeypot anti-spam -->
+              <div class="display-none" aria-hidden="true">
+                <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+              </div>
+
+              <div class="form-group">
+                <label for="empresa">Empresa (opcional)</label>
+                <input type="text" id="empresa" name="empresa" placeholder="Nombre de tu empresa" autocomplete="organization" />
+              </div>
+
+              <div class="form-group">
+                <label for="servicio">¿Qué necesitas? *</label>
+                <select id="servicio" name="servicio" required>
+                  <option value="">Selecciona un servicio</option>
+                  <option>Landing page</option>
+                  <option>Sitio corporativo</option>
+                  <option>Tienda e-commerce</option>
+                  <option>Aplicación web</option>
+                  <option>App móvil</option>
+                  <option>Mantenimiento / Soporte</option>
+                  <option>Otro</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="presupuesto">Presupuesto estimado</label>
+                <select id="presupuesto" name="presupuesto">
+                  <option value="low">Menos de $1,500 USD</option>
+                  <option value="mid" selected>$1,500 - $5,000 USD</option>
+                  <option value="high">$5,000 - $10,000 USD</option>
+                  <option value="enterprise">+$10,000 USD</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="mensaje">Cuéntanos tu proyecto *</label>
+                <textarea id="mensaje" name="mensaje" placeholder="Describe brevemente qué quieres construir, plazos, presupuesto estimado…" required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="file-label">
+                  <span>Adjuntar brief o archivos (opcional)</span>
+                  <input type="file" id="archivo" name="archivo" hidden />
+                  <div class="file-custom-input">📎 Seleccionar archivo...</div>
+                </label>
+              </div>
+
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="privacy" name="privacy" required />
+                <label for="privacy">Acepto la <a href="/legal/privacidad/" class="color-accent">política de privacidad</a></label>
+              </div>
+
+              <button type="submit" class="btn btn-primary width-100">
+                <span>Enviar mensaje ✦</span>
+              </button>
+              <div id="formResponse" class="form-response" role="alert" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand reveal">
+          <a href="/" class="logo">
+            <img src="/img/logo.png" alt="Orvenix logo" class="logo-image" />
+          </a>
+          <p>Construimos experiencias digitales que hacen crecer tu negocio. Calidad de agencia, trato personalizado.</p>
+          <div class="social-links">
+            <a href="https://twitter.com/orvenix" class="social-link social-x" title="𝕏 (Twitter)" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="Twitter/X"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/orvenix" class="social-link social-linkedin" title="LinkedIn" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="LinkedIn"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://instagram.com/orvenix" class="social-link social-instagram" title="Instagram" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="Instagram"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://facebook.com/orvenix" class="social-link social-facebook" title="Facebook" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="Facebook"><path d="M22.675 0h-21.35C.592 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294h-3.128v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/">Landing Pages</a></li>
+            <li><a href="/servicios/">E-commerce</a></li>
+            <li><a href="/servicios/">Apps Web</a></li>
+            <li><a href="/servicios/">Apps Móviles</a></li>
+            <li><a href="/servicios/">SEO & Performance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="/proceso/">Nuestro proceso</a></li>
+            <li><a href="/portafolio/">Portafolio</a></li>
+            <li><a href="/#testimonios">Testimonios</a></li>
+            <li><a href="/precios/">Precios</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/privacidad/">Privacidad</a></li>
+            <li><a href="/legal/terminos/">Términos de uso</a></li>
+            <li><a href="/legal/cookies/">Política de cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider reveal" />
+
+      <div class="footer-bottom reveal">
+        <span>© <span id="currentYear"></span> Orvenix. Todos los derechos reservados.</span>
+        <span>Hecho con ♥ en Monterrey, México</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js" defer></script>
+  <!-- Chatbot Orvenix -->
+  <div class="chatbot-widget-wrapper">
+    <div class="chatbot-welcome-bubble" id="chatbotWelcomeBubble">
+      Hola, soy Ox. Estoy aquí para orientarte con tu proyecto.
+    </div>
+
+    <button class="chatbot-fab" id="chatbotFab" aria-label="Abrir chat de Orvenix" aria-expanded="false" aria-controls="chatbotContainer">
+      <svg class="robot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+        <circle cx="12" cy="5" r="2"></circle>
+        <path d="M12 7v4"></path>
+        <path d="M8 16h.01"></path>
+        <path d="M16 16h.01"></path>
+        <polyline points="9 22 9 20 15 20 15 22"></polyline>
+      </svg>
+    </button>
+
+    <section class="chatbot-container" id="chatbotContainer" aria-label="Asistente virtual de Orvenix" aria-hidden="true">
+      <div class="chatbot-header">
+        <div class="bot-info">
+          <div class="bot-avatar">OX</div>
+          <div>
+            <div class="bot-name">Ox de Orvenix</div>
+            <div class="bot-status">Te respondo al instante</div>
+          </div>
+        </div>
+        <button class="chatbot-close" id="chatbotClose" aria-label="Cerrar chat">×</button>
+      </div>
+
+      <div class="chatbot-messages" id="chatbotMessages"></div>
+
+      <form class="chatbot-input-area" id="chatbotForm">
+        <input
+          type="text"
+          class="chatbot-input"
+          id="chatbotInput"
+          placeholder="Escribe tu pregunta..."
+          aria-label="Escribe tu mensaje"
+          autocomplete="off"
+        />
+        <button type="submit" class="chatbot-send" id="chatbotSend" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polyline points="22 2 15 22 11 13 2 9 22 2"></polyline>
+          </svg>
+        </button>
+      </form>
+    </section>
+  </div>
+
+  <script src="js/animations.js" defer></script> <!-- Correcto, en la raíz -->
+  <script src="js/interactions.js" defer></script> <!-- Correcto, en la raíz -->
+  <script src="js/nav.js" defer></script> <!-- Correcto, en la raíz -->
+  <script src="js/chatbot.js" defer></script> <!-- Correcto, en la raíz -->
+</body>
+</html>

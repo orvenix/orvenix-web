@@ -1,0 +1,19 @@
+# robots.txt para Orvenix
+
+User-agent: *
+Allow: /
+
+# Evitar que se indexen archivos de documentación y configuración
+Disallow: /.htaccess
+Disallow: /README.md
+Disallow: /ESTRUCTURA.md
+Disallow: /MAPA_NAVEGACION.md
+Disallow: /RESUMEN_FINAL.md
+
+# Permitir rastreo de assets para renderizado correcto
+Allow: /css/
+Allow: /js/
+Allow: /img/
+
+# Indicar la ubicación del sitemap para facilitar el rastreo
+Sitemap: https://orvenix.com.mx/sitemap.xml

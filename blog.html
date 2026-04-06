@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Blog de Orvenix — Guías, tendencias y consejos de expertos sobre desarrollo web, SEO, e-commerce y transformación digital en México y LATAM." />
+  <title>Blog de Desarrollo Web y SEO — Orvenix | Monterrey</title>
+
+  <link rel="canonical" href="https://orvenix.com.mx/blog/" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon.png" />
+  <link rel="apple-touch-icon" href="/img/favicon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://orvenix.com.mx/blog/" />
+  <meta property="og:title" content="Blog de Desarrollo Web y SEO — Orvenix" />
+  <meta property="og:description" content="Guías, tendencias y consejos de expertos sobre desarrollo web, SEO y transformación digital en México." />
+  <meta property="og:image" content="/img/logo.png" />
+  <meta property="og:locale" content="es_MX" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Blog de Desarrollo Web y SEO — Orvenix" />
+  <meta name="twitter:description" content="Guías y consejos de expertos en desarrollo web, SEO y transformación digital en México." />
+  <meta name="twitter:image" content="/img/logo.png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Blog de Orvenix",
+    "url": "https://orvenix.com.mx/blog/",
+    "description": "Artículos, guías y tendencias sobre desarrollo web, SEO, e-commerce y transformación digital en México.",
+    "inLanguage": "es-MX",
+    "isPartOf": { "@id": "https://orvenix.com.mx/#website" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Orvenix",
+      "@id": "https://orvenix.com.mx/#organization"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@800&family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/variables.css"> <!-- Correcto, sube un nivel -->
+  <link rel="stylesheet" href="../css/layout.css"> <!-- Correcto, sube un nivel -->
+  <link rel="stylesheet" href="../css/sections.css"> <!-- Correcto, sube un nivel -->
+  <link rel="stylesheet" href="../css/chatbot.css"> <!-- Correcto, sube un nivel -->
+
+  <style>
+    /* ── Animaciones de entrada ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes gradientShift {
+      0%,100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    @keyframes pulse-dot {
+      0%,100% { box-shadow: 0 0 0 0 rgba(99,102,241,.6); }
+      50%      { box-shadow: 0 0 0 6px rgba(99,102,241,0); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position:  200% center; }
+    }
+    @keyframes floatBadge {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-3px); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    /* Hero title animated gradient */
+    .blog-hero-title {
+      background: linear-gradient(270deg, #6366f1, #a855f7, #ec4899, #6366f1);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 6s ease infinite;
+    }
+
+    /* Eyebrow dot pulse */
+    .hero-eyebrow-dot { animation: pulse-dot 2s ease infinite; }
+
+    /* Stats bar */
+    .blog-stats {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      padding: 2.5rem 0;
+      flex-wrap: wrap;
+    }
+    .blog-stat {
+      text-align: center;
+      animation: countUp .6s ease both;
+    }
+    .blog-stat:nth-child(2) { animation-delay: .1s; }
+    .blog-stat:nth-child(3) { animation-delay: .2s; }
+    .blog-stat:nth-child(4) { animation-delay: .3s; }
+    .blog-stat-number {
+      font-size: 2.4rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .blog-stat-label {
+      font-size: .8rem;
+      color: var(--text-secondary);
+      margin-top: .3rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    /* Featured post */
+    .featured-post {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      cursor: pointer;
+      transition: transform .35s ease, box-shadow .35s ease;
+    }
+    .featured-post:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba(99,102,241,.25); }
+    .featured-post-image {
+      height: 320px;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-post-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg,#6366f1,#a855f7,#ec4899,#6366f1);
+      background-size: 300% 300%;
+      animation: gradientShift 8s ease infinite;
+      opacity: .35;
+    }
+    .featured-post-image svg { position: relative; z-index: 1; }
+    .featured-label {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      color: #fff;
+      font-size: .75rem;
+      font-weight: 700;
+      padding: .3rem .75rem;
+      border-radius: 20px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      z-index: 2;
+      animation: floatBadge 3s ease infinite;
+    }
+    .featured-post-body { padding: 2rem; }
+
+    /* Category filter */
+    .filter-bar {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      animation: fadeIn .5s ease both;
+    }
+    .filter-btn {
+      padding: .45rem 1.1rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: .85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all .25s ease;
+    }
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      border-color: transparent;
+      color: #fff;
+    }
+
+    /* Card enhancements */
+    .blog-card {
+      overflow: hidden;
+      transition: transform .35s ease, box-shadow .35s ease;
+      animation: fadeUp .6s ease both;
+    }
+    .blog-card:nth-child(1) { animation-delay: .05s; }
+    .blog-card:nth-child(2) { animation-delay: .12s; }
+    .blog-card:nth-child(3) { animation-delay: .19s; }
+    .blog-card:nth-child(4) { animation-delay: .26s; }
+    .blog-card:nth-child(5) { animation-delay: .33s; }
+    .blog-card:nth-child(6) { animation-delay: .40s; }
+    .blog-card:nth-child(7) { animation-delay: .47s; }
+    .blog-card:nth-child(8) { animation-delay: .54s; }
+    .blog-card:nth-child(9) { animation-delay: .61s; }
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(99,102,241,.2);
+    }
+    .blog-card:hover .card-thumb { transform: scale(1.06); }
+    .blog-card:hover .card-thumb::after {
+      background-position: 200% center;
+    }
+
+    .card-thumb {
+      height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card-thumb::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.15) 50%, transparent 60%);
+      background-size: 200% 100%;
+      background-position: -200% center;
+      transition: background-position .6s ease;
+    }
+    .blog-card:hover .card-thumb::after { background-position: 200% center; }
+
+    /* Reading time chip */
+    .read-time {
+      display: inline-flex;
+      align-items: center;
+      gap: .3rem;
+      font-size: .75rem;
+      color: var(--text-secondary);
+    }
+    .read-time svg { width: 13px; height: 13px; }
+
+    /* "Leer más" arrow animation */
+    .read-more-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      transition: gap .2s ease;
+    }
+    .read-more-link:hover { gap: .6rem; }
+
+    /* Tags cloud */
+    .tags-section { margin-top: 4rem; }
+    .tags-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      justify-content: center;
+      margin-top: 1.5rem;
+    }
+    .tag-chip {
+      padding: .4rem 1rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--border);
+      font-size: .82rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: all .25s ease;
+      cursor: pointer;
+    }
+    .tag-chip:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* Newsletter upgrades */
+    .newsletter-inner {
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      padding: 3rem 2rem;
+      background: var(--bg-2);
+      position: relative;
+      overflow: hidden;
+    }
+    .newsletter-inner::before {
+      content: '';
+      position: absolute;
+      top: -60px; left: 50%; transform: translateX(-50%);
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(99,102,241,.15), transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 600px) {
+      .blog-stats { gap: 1.5rem; }
+      .blog-stat-number { font-size: 1.8rem; }
+      .featured-post-image { height: 200px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="preloader" aria-label="Cargando">
+    <img src="/img/logo.png" alt="Orvenix" class="preloader-logo" />
+  </div>
+
+  <div id="scrollProgress"></div>
+  <div id="globalGlow" class="global-glow"></div>
+  <div id="navOverlay"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="/" class="logo" aria-label="Orvenix — inicio"> <!-- Correcto, sube un nivel -->
+          <img src="/img/logo.png" alt="Orvenix logo" class="logo-image" /> <!-- Correcto, sube un nivel -->
+        </a>
+
+        <button id="themeToggle" class="theme-toggle" aria-label="Cambiar tema">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
+        <ul class="nav-links" id="navLinks" role="menubar">
+          <li role="none"><a href="/servicios/" role="menuitem">Servicios</a></li>
+          <li role="none"><a href="/portafolio/" role="menuitem">Portafolio</a></li>
+          <li role="none"><a href="/about/" role="menuitem">Nosotros</a></li>
+          <li role="none"><a href="/proceso/" role="menuitem">Proceso</a></li> <!-- Correcto, sube un nivel y ancla -->
+          <li role="none"><a href="/blog/" class="active" role="menuitem">Blog</a></li>
+          <li role="none"><a href="/contacto/" class="nav-cta" role="menuitem">Contacto</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <a href="https://wa.me/528112345678" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" class="whatsapp-svg" fill="currentColor"><path d="M16 0C7.163 0 0 7.163 0 16c0 2.825.733 5.476 2.016 7.785L0 31.2l7.587-1.99A15.93 15.93 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333a13.28 13.28 0 01-6.604-1.722l-.474-.264-4.505 1.182 1.203-4.42-.292-.464A13.267 13.267 0 012.667 16C2.667 8.649 8.649 2.667 16 2.667S29.333 8.649 29.333 16 23.351 29.333 16 29.333zm7.283-9.99c-.359-.18-2.125-1.047-2.453-1.167-.328-.12-.568-.18-.807.18s-.927 1.167-1.135 1.406c-.213.239-.422.269-.781.09-.359-.18-1.516-.557-2.885-1.779-1.063-.948-1.781-2.119-1.99-2.479-.213-.359-.021-.553.158-.732.163-.161.359-.419.536-.628s.239-.359.359-.598c.12-.239.06-.449-.03-.628s-.807-1.946-1.106-2.665c-.293-.701-.589-.606-.807-.617-.208-.01-.448-.01-.688-.01s-.628.09-.957.449c-.328.359-1.255 1.226-1.255 2.99s1.286 3.468 1.465 3.708c.18.239 2.531 3.865 6.131 5.416.857.368 1.526.589 2.047.755.86.273 1.643.235 2.261.143.69-.103 2.125-.868 2.422-1.706.297-.838.297-1.556.208-1.706s-.328-.239-.688-.419z"/></svg>
+  </a>
+
+  <button id="backToTop" aria-label="Volver arriba">↑</button>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- HERO BLOG -->
+    <section class="hero" aria-label="Blog de Orvenix">
+      <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="hero-eyebrow">
+              <div class="hero-eyebrow-dot" aria-hidden="true"></div>
+              <span>Conocimiento Compartido</span>
+            </div>
+            <h1 class="hero-title blog-hero-title">
+              Blog de desarrollo<br/>
+              web y digital
+            </h1>
+            <p class="hero-subtitle">
+              Artículos, guías y consejos prácticos sobre desarrollo web, diseño,
+              SEO, transformación digital y nuevas tecnologías. Actualizado cada semana.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATS BAR -->
+    <section aria-label="Estadísticas del blog">
+      <div class="container">
+        <div class="blog-stats reveal">
+          <div class="blog-stat">
+            <div class="blog-stat-number">45+</div>
+            <div class="blog-stat-label">Artículos</div>
+          </div>
+          <div class="blog-stat">
+            <div class="blog-stat-number">8</div>
+            <div class="blog-stat-label">Categorías</div>
+          </div>
+          <div class="blog-stat">
+            <div class="blog-stat-number">12k</div>
+            <div class="blog-stat-label">Lectores / mes</div>
+          </div>
+          <div class="blog-stat">
+            <div class="blog-stat-number">3</div>
+            <div class="blog-stat-label">Nuevos / semana</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED POST -->
+    <section aria-label="Artículo destacado">
+      <div class="container">
+        <p style="font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-secondary);margin-bottom:1rem;">Artículo destacado</p>
+        <div class="card featured-post reveal">
+          <div class="featured-post-image">
+            <span class="featured-label">Destacado</span>
+            <svg width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.85)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="featured-post-body">
+            <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:1rem;">
+              <span class="badge">Inteligencia Artificial</span>
+              <span style="font-size:.82rem;color:var(--text-secondary);">1 Abr 2025</span>
+              <span class="read-time">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                8 min de lectura
+              </span>
+            </div>
+            <h2 style="font-size:1.65rem;margin-bottom:.9rem;line-height:1.35;">IA Generativa en el desarrollo web: cómo integrar LLMs en tus proyectos sin romper nada</h2>
+            <p style="color:var(--text-secondary);line-height:1.75;margin-bottom:1.5rem;max-width:680px;">
+              La IA generativa dejó de ser un experimento de laboratorio. En este artículo exploramos patrones concretos para integrar modelos de lenguaje (GPT-4o, Claude, Gemini) en aplicaciones web reales: desde chatbots con contexto persistente hasta generación dinámica de contenido y búsqueda semántica con embeddings. Incluye ejemplos de código y errores comunes a evitar.
+            </p>
+            <a href="#" class="read-more-link">Leer artículo completo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG GRID -->
+    <section style="margin-top:3rem;">
+      <div class="container">
+
+        <!-- Filter bar -->
+        <div class="filter-bar" role="group" aria-label="Filtrar artículos por categoría">
+          <button class="filter-btn active" data-filter="all">Todos</button>
+          <button class="filter-btn" data-filter="seo">SEO</button>
+          <button class="filter-btn" data-filter="react">React / Next.js</button>
+          <button class="filter-btn" data-filter="ecommerce">E-commerce</button>
+          <button class="filter-btn" data-filter="seguridad">Seguridad</button>
+          <button class="filter-btn" data-filter="diseno">Diseño</button>
+          <button class="filter-btn" data-filter="devops">DevOps</button>
+          <button class="filter-btn" data-filter="ia">IA</button>
+        </div>
+
+        <div class="grid-3" id="blogGrid" style="gap:2rem;">
+
+          <!-- Post 1 — SEO -->
+          <div class="card blog-card" data-cat="seo">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><polyline points="11 8 11 11 13 13"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;">SEO</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">15 Mar 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">Core Web Vitals: Cómo optimizar tu sitio web en 2025</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                LCP, INP y CLS siguen siendo el termómetro de Google. Descubre herramientas, técnicas de lazy-loading y estrategias de caché para llevar tu puntuación al verde.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 2 — React -->
+          <div class="card blog-card" data-cat="react">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#f093fb 0%,#f5576c 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:var(--accent-2);">React</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">10 Mar 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>9 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">Next.js 15: Novedades y cómo migrar tus proyectos</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                Server Actions estables, Partial Prerendering y el nuevo compilador Turbopack. Guía práctica de migración desde Next.js 13/14 con casos de borde documentados.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 3 — E-commerce -->
+          <div class="card blog-card" data-cat="ecommerce">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#4facfe 0%,#00f2fe 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:var(--accent-3);">E-commerce</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">5 Mar 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">Conversión en tiendas online: 7 estrategias que funcionan</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                Checkout de un paso, social proof en tiempo real, urgencia honesta y recuperación de carrito abandonado. Datos reales de clientes en México y LATAM.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 4 — Seguridad -->
+          <div class="card blog-card" data-cat="seguridad">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#fa709a 0%,#fee140 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:rgba(250,112,154,.85);">Seguridad</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">28 Feb 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>10 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">Seguridad web: Protege tu sitio de los ataques más comunes</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                CORS, XSS, CSRF, SQL Injection y ataques de fuerza bruta. Aprende a implementar headers de seguridad, CSP y rate-limiting con ejemplos en Node.js y PHP.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 5 — Diseño -->
+          <div class="card blog-card" data-cat="diseno">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#84fab0 0%,#8fd3f4 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:rgba(132,250,176,.7);">Diseño</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">20 Feb 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>5 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">UI/UX: Principios de diseño para aplicaciones modernas</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                Jerarquía visual, espaciado coherente, accesibilidad WCAG 2.2 y micro-interacciones que enamoran al usuario. Con referencias a Figma y sistemas de diseño reales.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 6 — DevOps -->
+          <div class="card blog-card" data-cat="devops">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#a8edea 0%,#fed6e3 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:rgba(168,237,234,.7);">DevOps</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">12 Feb 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>8 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">Docker y CI/CD: Automatiza tu flujo de trabajo</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                Desde Dockerfile multistage hasta pipelines completos en GitHub Actions: build, test, deploy a VPS o a Vercel/Railway con rollback automático.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 7 — IA -->
+          <div class="card blog-card" data-cat="ia">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 50%,#0f3460 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(167,139,250,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96-.46 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.44-3.14"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96-.46 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.44-3.14"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:rgba(139,92,246,.85);">IA</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">3 Feb 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>11 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">RAG y embeddings: búsqueda semántica para tu app web</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                Implementa búsqueda por similitud con pgvector o Pinecone, genera embeddings con OpenAI y construye un sistema RAG completo sobre tu propia base de conocimiento.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 8 — SEO -->
+          <div class="card blog-card" data-cat="seo">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#f7971e 0%,#ffd200 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;">SEO</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">28 Ene 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>7 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">Schema Markup avanzado: rich snippets que generan clics</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                FAQ, How-To, Product y Review schemas implementados correctamente en JSON-LD. Casos reales donde el CTR subió más de un 40% en Google Search.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+          <!-- Post 9 — React -->
+          <div class="card blog-card" data-cat="react">
+            <div class="card-thumb" style="background:linear-gradient(135deg,#30cfd0 0%,#330867 100%);">
+              <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+            </div>
+            <div style="padding:1.75rem;">
+              <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.9rem;">
+                <span class="badge" style="font-size:.78rem;background:var(--accent-2);">React</span>
+                <span style="font-size:.78rem;color:var(--text-secondary);">15 Ene 2025</span>
+                <span class="read-time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>6 min</span>
+              </div>
+              <h3 style="font-size:1.15rem;margin-bottom:.65rem;line-height:1.4;">React Query v5 + Zustand: gestión de estado sin drama</h3>
+              <p style="color:var(--text-secondary);margin-bottom:1.25rem;line-height:1.65;font-size:.92rem;">
+                Cuándo usar servidor vs. cliente state, cómo evitar el cache invalidation hell y patrones para sincronizar datos optimistas con la API sin romper la UX.
+              </p>
+              <a href="#" class="read-more-link" style="font-size:.9rem;">Leer más <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Empty state (hidden by default) -->
+        <div id="emptyState" style="display:none;text-align:center;padding:4rem 0;color:var(--text-secondary);">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:1rem;opacity:.4;" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <p>No hay artículos en esta categoría aún. Próximamente.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TAGS CLOUD -->
+    <section class="tags-section" aria-label="Temas populares">
+      <div class="container" style="text-align:center;">
+        <p style="font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-secondary);margin-bottom:.5rem;">Temas populares</p>
+        <h2 class="reveal" style="font-size:1.8rem;margin-bottom:.5rem;">Explora por tema</h2>
+        <div class="tags-grid reveal">
+          <span class="tag-chip">#WebPerformance</span>
+          <span class="tag-chip">#CoreWebVitals</span>
+          <span class="tag-chip">#NextJS</span>
+          <span class="tag-chip">#TypeScript</span>
+          <span class="tag-chip">#TailwindCSS</span>
+          <span class="tag-chip">#SEOTécnico</span>
+          <span class="tag-chip">#Ecommerce</span>
+          <span class="tag-chip">#APIRest</span>
+          <span class="tag-chip">#GraphQL</span>
+          <span class="tag-chip">#Docker</span>
+          <span class="tag-chip">#IA</span>
+          <span class="tag-chip">#Accesibilidad</span>
+          <span class="tag-chip">#Figma</span>
+          <span class="tag-chip">#Node.js</span>
+          <span class="tag-chip">#MongoDB</span>
+          <span class="tag-chip">#PostgreSQL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section style="margin-top:4rem;padding-bottom:5rem;">
+      <div class="container" style="max-width:620px;">
+        <div class="newsletter-inner reveal">
+          <div style="text-align:center;position:relative;z-index:1;">
+            <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,#6366f1,#a855f7);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <h2 style="font-size:1.9rem;margin-bottom:.75rem;">Recibe artículos en tu email</h2>
+            <p style="color:var(--text-secondary);margin-bottom:2rem;line-height:1.65;">
+              Cada semana: un artículo profundo sobre desarrollo web, herramientas nuevas y estrategias probadas. Sin relleno, solo contenido útil.
+            </p>
+            <form style="display:flex;gap:.5rem;margin-bottom:1.25rem;flex-wrap:wrap;" onsubmit="handleNewsletter(event)">
+              <input type="email" required placeholder="tu@email.com" style="flex:1;min-width:200px;padding:.8rem 1rem;border:1.5px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text);font-size:.95rem;transition:border-color .2s;" onfocus="this.style.borderColor='var(--accent)'" onblur="this.style.borderColor='var(--border)'" />
+              <button type="submit" class="btn btn-primary">Suscribirse</button>
+            </form>
+            <div id="newsletterMsg" style="display:none;font-size:.9rem;color:#10b981;font-weight:600;margin-bottom:.5rem;">¡Listo! Te enviaremos el próximo artículo.</div>
+            <div style="display:flex;align-items:center;justify-content:center;gap:1.5rem;font-size:.8rem;color:var(--text-secondary);">
+              <span>✓ Sin spam</span>
+              <span>✓ Cancelar cuando quieras</span>
+              <span>✓ +1,200 lectores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+    <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand reveal">
+          <a href="/" class="logo">
+            <img src="/img/logo.png" alt="Orvenix logo" class="logo-image" />
+          </a>
+          <p>Construimos experiencias digitales que hacen crecer tu negocio. Calidad de agencia, trato personalizado.</p>
+          <div class="social-links">
+            <a href="https://twitter.com/orvenix" class="social-link social-x" title="𝕏 (Twitter)" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="Twitter/X"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="https://linkedin.com/company/orvenix" class="social-link social-linkedin" title="LinkedIn" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="LinkedIn"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="https://instagram.com/orvenix" class="social-link social-instagram" title="Instagram" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="Instagram"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.981 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="https://facebook.com/orvenix" class="social-link social-facebook" title="Facebook" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-label="Facebook"><path d="M22.675 0h-21.35C.592 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24h11.495v-9.294h-3.128v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="/servicios/">Landing Pages</a></li>
+            <li><a href="/servicios/">E-commerce</a></li>
+            <li><a href="/servicios/">Apps Web</a></li>
+            <li><a href="/servicios/">Apps Móviles</a></li>
+            <li><a href="/servicios/">SEO &amp; Performance</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Empresa</h4>
+          <ul>
+            <li><a href="/proceso/">Nuestro proceso</a></li>
+            <li><a href="/portafolio/">Portafolio</a></li>
+            <li><a href="/#testimonios">Testimonios</a></li>
+            <li><a href="/precios/">Precios</a></li>
+            <li><a href="/contacto/">Contacto</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col reveal">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="/legal/privacidad/">Privacidad</a></li>
+            <li><a href="/legal/terminos/">Términos de uso</a></li>
+            <li><a href="/legal/cookies/">Política de cookies</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider reveal" />
+
+      <div class="footer-bottom reveal">
+        <span>© <span id="currentYear"></span> Orvenix. Todos los derechos reservados.</span>
+        <span>Hecho con ♥ en Monterrey, México</span>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- Chatbot Orvenix -->
+  <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-welcome" id="chatbotWelcome">
+      ¡Hola! Soy Ox, ¿te ayudo con tu proyecto?
+    </div>
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Abrir asistente Orvenix">
+      <svg class="robot-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h.01M16 16h.01"/><polyline points="9 22 9 20 15 20 15 22"/></svg>
+    </button>
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">
+        <div class="bot-info">
+          <div class="bot-avatar">OX</div>
+          <div>
+            <div class="bot-name">Orvenix Assistant</div>
+            <div class="bot-status">En línea</div>
+          </div>
+        </div>
+        <button class="chatbot-close" id="chatbotClose" aria-label="Cerrar chat">&times;</button>
+      </div>
+      <div class="chatbot-messages" id="chatbotMessages">
+        <div class="message bot">¡Hola! Soy el asistente virtual de <strong>Orvenix</strong>. ¿En qué puedo ayudarte hoy? (Prueba escribiendo "precios" o "servicios")</div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatbotInput" placeholder="Escribe tu mensaje..." autocomplete="off" />
+        <button id="chatbotSend" aria-label="Enviar mensaje">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polyline points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/interactions.js"></script>
+  <script src="../js/animations.js"></script>
+  <script src="../js/chatbot.js"></script>
+
+  <script>
+    /* ── Category filter ── */
+    (function () {
+      const btns  = document.querySelectorAll('.filter-btn');
+      const cards = document.querySelectorAll('#blogGrid .blog-card');
+      const empty = document.getElementById('emptyState');
+
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filter = btn.dataset.filter;
+          let visible = 0;
+
+          cards.forEach((card, i) => {
+            const match = filter === 'all' || card.dataset.cat === filter;
+            card.style.display = match ? '' : 'none';
+            if (match) {
+              card.style.animationDelay = (visible * 0.07) + 's';
+              card.style.animation = 'none';
+              // Force reflow so the animation restarts
+              void card.offsetWidth;
+              card.style.animation = '';
+              visible++;
+            }
+          });
+
+          empty.style.display = visible === 0 ? 'block' : 'none';
+        });
+      });
+    })();
+
+    /* ── Newsletter form ── */
+    function handleNewsletter(e) {
+      e.preventDefault();
+      const msg = document.getElementById('newsletterMsg');
+      msg.style.display = 'block';
+      e.target.reset();
+      e.target.querySelector('button').disabled = true;
+      e.target.querySelector('button').textContent = '¡Suscrito!';
+    }
+  </script>
+
+</body>
+</html>

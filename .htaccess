@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.orvenix\.com\.mx [NC]
+RewriteRule ^(.*)$ http://orvenix.com.mx/$1 [L,R=301]
